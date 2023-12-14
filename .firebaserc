@@ -1,0 +1,23 @@
+{
+  "projects": {
+    "default": "sala-de-juegos-2023",
+    "sala-de-juegos-2023-sp": "sala-de-juegos-2023"
+  },
+  "targets": {
+    "game-room-e1554": {
+      "hosting": {
+        "GameRoomTP": [
+          "game-room-e1554"
+        ]
+      }
+    },
+    "sala-de-juegos-2023": {
+      "hosting": {
+        "GameRoomTP": [
+          "./dist"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

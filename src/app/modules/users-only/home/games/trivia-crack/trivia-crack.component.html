@@ -1,0 +1,68 @@
+<!-- <div class="container">
+    <div class="row">
+        <h1>Score: {{score}}</h1>
+    </div>
+    <div class="row" *ngIf="!triviaQuestion && !loadingQuestion">
+        <div class="col">
+            <app-trivia-crack-wheel (idCategoriaSelecEvent)="setQuestion($event)" ></app-trivia-crack-wheel>
+        </div>
+    </div>
+    <div *ngIf="!loadingQuestion && triviaQuestion" class="row justify-content-center">
+        <div class="col col-lg-8 align-self-center text-center">
+            <h1>{{triviaQuestion.category}}</h1>
+            <h1>{{triviaQuestion.question}}</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center" *ngIf="!loadingQuestion && triviaQuestion">
+        <div class="col col-lg-8 align-self-center ">
+            <app-trivia-crack-panel [buttons]="answers" (buttonClicked)="answerSelected($event)" [classWrapper]="'multiple-choice-container'" [columns]="2"></app-trivia-crack-panel>
+        </div>
+    </div>
+</div>
+<div *ngIf="loadingQuestion">
+    <div class="spinner">
+        <mat-spinner color="accent"></mat-spinner>
+    </div>
+</div> -->
+<br>
+<br>
+<div class="text fs-2">
+    Puntaje: 
+    <strong>
+        {{puntaje}}
+    </strong>
+    <br>
+    <br>
+    <br>
+<div class="container d-flex flex-column justify-content-center align-items-center h-100">
+    <div class="row mb-5">
+      <button class="btn btn-success btn-lg d-flex" style="margin-bottom: 10px;" (click)="iniciarJuego()">
+        {{ btnComenzar }}
+      </button>
+    </div>
+    <div class="card text-center w-50">
+      <img [src]="preguntaImg" class="card-img-top img-fluid mx-auto" alt="..." style="max-height: 300px; width: auto;"/>
+      <div class="card-body">
+        <h5 class="card-title text h2">{{ preguntaStr }}</h5>
+        <div class="d-grid gap-2">
+          <button
+            *ngFor="let respuesta of respuestas; index as position"
+            type="button"
+            [disabled]="botonesDeshabilitados"
+            [class]="'btn ' + respuesta.clase + ' btn-lg'"
+            (click)="Responder(position)"
+          >
+            {{ respuesta.respuesta }}
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <button class="btn btn-warning btn-lg" (click)="nuevoNivel()"           [disabled]="botonSiguienteDeshabilitado"
+      >
+        Siguiente
+      </button>
+    </div>
+  </div>
+
+

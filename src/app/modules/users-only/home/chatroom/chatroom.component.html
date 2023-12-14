@@ -1,0 +1,40 @@
+<div style="overflow: scroll; height: xyz" #scrollMe class="">
+  <div class="container-fluid chat-container bg-info">
+    <div class="row">
+      <div class="menu">
+        <div class="name">Chatroom!</div>
+      </div>
+    </div>
+    <div class="row">
+      <ol class="chat">
+        <li
+          *ngFor="let message of messages"
+          [class]="message.uid == currentUser.uid ? 'self' : 'other'"
+        >
+          <div class="msg">
+            <div *ngIf="message.uid != currentUser.uid" class="user">
+              {{ message.username }}
+              <span *ngIf="message.isAdmin" class="range admin">Admin</span>
+            </div>
+            <p class="text fs-6">{{ message.message }}</p>
+            <time>{{ message.datetime | date : "dd/MM - HH:mm" }}</time>
+          </div>
+        </li>
+      </ol>
+    </div>
+    <div class="row">
+      <div class="typezone">
+        <textarea
+          type="text"
+          class="text fs-5"
+          placeholder="Chatea con los demas usuarios..."
+          [(ngModel)]="newMessage"
+          [ngModelOptions]="{ standalone: true }"
+        ></textarea>
+        <button class="send" (click)="sendMessage()">
+          <mat-icon>arrow_forward_ios</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

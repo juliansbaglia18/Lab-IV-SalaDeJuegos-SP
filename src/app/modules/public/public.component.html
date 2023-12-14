@@ -1,0 +1,31 @@
+<mat-toolbar color="primary" class="app-header">
+  <div>
+    <a
+      routerLink="about-me"
+      routerLinkActive="router-link-active"
+      class="aboutme"
+      >Sobre mi</a
+    >
+  </div>
+  <div class="nav-tool-items">
+    <a
+      mat-button
+      mat-raised-button
+      color="basic"
+      routerLink="login"
+      routerLinkActive="active"
+      class="nav-bar-items"
+      >Loguearse</a
+    >
+    <a
+      mat-button
+      mat-raised-button
+      color="basic"
+      routerLink="register"
+      routerLinkActive="active"
+      class="nav-bar-items"
+      >Registrarse</a
+    >
+  </div>
+</mat-toolbar>
+<router-outlet></router-outlet>

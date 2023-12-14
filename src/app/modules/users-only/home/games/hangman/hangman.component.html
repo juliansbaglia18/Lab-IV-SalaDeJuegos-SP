@@ -1,0 +1,202 @@
+<!-- <div class="header">
+    <h1><strong>Hangman</strong></h1>
+</div>
+<div class="hangman">
+    <app-hangman-display (gameFinished)="onGameFinished()" [guesses]="guesses" [question]="question"></app-hangman-display>
+    <ng-container *ngIf="!restartGameBtnShown else restartGameBtn">
+      <app-hangman-question  [guesses]="guesses" [question]="question" ></app-hangman-question>
+      <app-hangman-keyboard (keyPressed)="guess($event)" [question]="question"></app-hangman-keyboard>
+    </ng-container>
+  </div>
+  <ng-template #restartGameBtn>
+    <button class="btn" (click)="reset()">
+      {{'>>Restart Game\<\<'}}
+    </button>
+  </ng-template> -->
+<br />
+<br>
+<div class="text fs-2">
+    Puntaje: 
+    <strong>
+        {{score}}
+    </strong>
+    <br>
+    <br>
+    <br>
+<div>
+  <div class="container text-center">
+    <div class="row">
+      <div class="">
+        <button
+          class="btn btn-primary col-3"
+          type="button"
+          id="button-addon2"
+          (click)="empezar()"
+        >
+          {{ btnEmpezar }}
+        </button>
+      </div>
+    </div>
+    <br />
+    <div class="row text-center">
+      <div class="col">
+        <img class="img" [src]="img" style="width: 200px" width="50px" alt="" />
+      </div>
+    </div>
+    <br />
+    <div class="row text-center">
+      <div
+        [ngClass]="{
+          alert: true,
+          'col-12': true,
+          'alert-warning': alertType === 'warning',
+          'alert-danger': alertType === 'danger',
+          'alert-success': alertType === 'success'
+        }"
+        role="alert"
+      >
+        <p class="h5">Palabra secreta:</p>
+        <p class="h6">
+          {{ palabraSecretaOculta }}
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <!-- <div class="">
+      <input [(ngModel)]="letra" id="letraInput" (input)="onInputChange($event)" type="text" class="col-4" placeholder="Ingresar letra" aria-label="Recipient's username" aria-describedby="button-addon2">
+    </div>
+    <div class="">
+    
+      <button class="btn btn-warning col-4" id="letraBtn" type="button" (click)="ingresarLetra()" id="button-addon2">Ingresar</button>
+    </div> -->
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="keyboard">
+            <div class="row">
+              <div class="col">
+                <button id="q" class="btn key" (click)="ingresarLetra('q')">
+                  q
+                </button>
+                <button id="w" class="btn key" (click)="ingresarLetra('w')">
+                  w
+                </button>
+                <button id="e" class="btn key" (click)="ingresarLetra('e')">
+                  e
+                </button>
+                <button id="r" class="btn key" (click)="ingresarLetra('r')">
+                  r
+                </button>
+                <button id="t" class="btn key" (click)="ingresarLetra('t')">
+                  t
+                </button>
+                <button id="y" class="btn key" (click)="ingresarLetra('y')">
+                  y
+                </button>
+                <button id="u" class="btn key" (click)="ingresarLetra('u')">
+                  u
+                </button>
+                <button id="i" class="btn key" (click)="ingresarLetra('i')">
+                  i
+                </button>
+                <button id="o" class="btn key" (click)="ingresarLetra('o')">
+                  o
+                </button>
+                <button id="p" class="btn key" (click)="ingresarLetra('p')">
+                  p
+                </button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <button id="a" class="btn key" (click)="ingresarLetra('a')">
+                  a
+                </button>
+                <button id="s" class="btn key" (click)="ingresarLetra('s')">
+                  s
+                </button>
+                <button id="d" class="btn key" (click)="ingresarLetra('d')">
+                  d
+                </button>
+                <button id="f" class="btn key" (click)="ingresarLetra('f')">
+                  f
+                </button>
+                <button id="g" class="btn key" (click)="ingresarLetra('g')">
+                  g
+                </button>
+                <button id="h" class="btn key" (click)="ingresarLetra('h')">
+                  h
+                </button>
+                <button id="j" class="btn key" (click)="ingresarLetra('j')">
+                  j
+                </button>
+                <button id="k" class="btn key" (click)="ingresarLetra('k')">
+                  k
+                </button>
+                <button id="l" class="btn key" (click)="ingresarLetra('l')">
+                  l
+                </button>
+                <button id="ñ" class="btn key" (click)="ingresarLetra('ñ')">
+                  ñ
+                </button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <button id="z" class="btn key" (click)="ingresarLetra('z')">
+                  z
+                </button>
+                <button id="x" class="btn key" (click)="ingresarLetra('x')">
+                  x
+                </button>
+                <button id="c" class="btn key" (click)="ingresarLetra('c')">
+                  c
+                </button>
+                <button id="v" class="btn key" (click)="ingresarLetra('v')">
+                  v
+                </button>
+                <button id="b" class="btn key" (click)="ingresarLetra('b')">
+                  b
+                </button>
+                <button id="n" class="btn key" (click)="ingresarLetra('n')">
+                  n
+                </button>
+                <button id="m" class="btn key" (click)="ingresarLetra('m')">
+                  m
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <hr />
+    </div>
+    <br />
+    <div class="row">
+      <div class="">
+        <input
+          [(ngModel)]="arriesga"
+          id="arriesgaInput"
+          type="text"
+          class="col-4"
+          placeholder="Arriesgar palabra"
+          aria-label="Recipient's username"
+          aria-describedby="button-addon2"
+        />
+      </div>
+      <br />
+      <div class="">
+        <button
+          class="btn btn-danger col-4"
+          id="arriesgaBtn"
+          type="button"
+          (click)="arriesgarPalabra()"
+          id="button-addon2"
+        >
+          Arriesga
+        </button>
+      </div>
+    </div>
+  </div>
+  <br />
+</div>

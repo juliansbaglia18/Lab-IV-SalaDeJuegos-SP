@@ -1,0 +1,77 @@
+<!-- 
+<div class="header">
+    <h1><strong>HIGH OR LOW</strong></h1>
+</div>
+<div class="high-or-low">
+    <div class="button-container">
+        <button mat-raised-button id="btnLow" (click)="handleAskForCard('Low')" color="warn">LOW</button>
+        <button mat-raised-button id="btnHigh" (click)="handleAskForCard('High')" color="warn">HIGH</button>
+    </div>
+    <app-hol-display [cards]="cards"></app-hol-display>
+</div> -->
+<br>
+<div class="text fs-2">
+    Puntaje: 
+    <strong>
+        {{score}}
+    </strong>
+    <br>
+    <br>
+    <br>
+</div>
+<div class="container">
+    <div class="row justify-content-around">
+      <div class="col-3 text-center align-self-center" *ngIf="numeroActual != 0">
+        <div class="card hearts">
+          <div class="card-body" >
+            <span class="card-number">{{ numeroActual === 1 ? 'A' : numeroActual }}</span>
+            <span class="suit">&hearts;</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-3 text-center align-self-center" *ngIf="numeroActual == 0">
+        <div class="card back">
+          <img
+            src="https://i.pinimg.com/474x/91/8b/cf/918bcfaf80dc024916d9db3023eea3f2.jpg"
+            alt="Reverso del naipe"
+          />
+        </div>
+      </div>
+      <div class="col-3 text-center align-self-center">
+        <div class="row">
+          <button class="btn btn-success btn-lg" (click)="comenzar()">{{btnComenzar}}</button>
+        </div>
+        <br>
+        <div class="row">
+          <button class="btn btn-primary btn-sm" id="mayor" (click)="mayor()">Mayor</button>
+        </div>
+        <div class="row"><br /></div>
+        <div class="row">
+          <button class="btn btn-warning btn-sm" id="menor" (click)="menor()">Menor</button>
+        </div>
+        <div class="row">
+          <br>
+        </div>
+        <div class="d-grid grap-2">
+          <div class="row">
+            <div class="alert alert-primary text-primary h2" *ngIf="mostrarGanador">
+            Ganó!
+          </div>
+        </div>
+        <div class="row">
+          <div class="alert alert-danger text-danger h2" *ngIf="mostrarPerdedor">
+            Perdió!
+          </div>
+        </div>
+        </div>
+      </div>
+      <div class="col-3 text-center align-self-center">
+        <div class="card back">
+          <img
+            src="https://i.pinimg.com/474x/91/8b/cf/918bcfaf80dc024916d9db3023eea3f2.jpg"
+            alt="Reverso del naipe"
+          />
+        </div>
+      </div>
+    </div>
+  </div>

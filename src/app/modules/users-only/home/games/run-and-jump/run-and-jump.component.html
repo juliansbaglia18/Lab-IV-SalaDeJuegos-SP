@@ -1,0 +1,44 @@
+<!-- <div class="game">
+    <div id="character" #character [ngClass]="animate ? 'animate' : ''"></div>
+    <div id="block" #block></div>
+</div>
+<h1>Score: {{score}}</h1> -->
+<br>
+<br>
+<div class="text fs-2">
+    Puntaje: 
+    <strong>
+        {{score}}
+    </strong>
+    <br>
+    <br>
+    <br>
+<div class="container text-dark">
+    <p class="text-center h1 my-4">Juego de Velocidad de Escritura</p>
+
+    
+    <!-- Botón para iniciar el juego -->
+    <div class="text-center">
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <button class="btn btn-success btn-lg p-2 m-2" (click)="comenzar()">{{ btnComenzar}}</button>
+
+      </div>
+    </div>
+
+    <!-- Palabra a escribir -->
+    <div>
+        <p class="text-center h2">La palabra es: </p>
+        <p class="text-center text-danger h1 fw-bold text-uppercase"> {{palabraCorrecta}} </p>
+      </div>
+  
+    <!-- Cuadro de texto para escribir la palabra -->
+    <div class="input-group mb-3">
+        <input type="text" [disabled]="!comenzado" [ngClass]="{'text-danger': esIncorrecta, 'text-success': !esIncorrecta}" class="form-control fs-3 " placeholder="Ingrese la palabra" aria-label="Recipient's username" (ngModelChange)="onInputChange()" [(ngModel)]="palabraIngresada" aria-describedby="basic-addon2">
+        <div class="input-group-text bg-secondary fs-3 fw-bold text-light" id="basic-addon2">{{cronometro}} .ms</div>
+      </div>
+  
+      <div *ngIf="finaliza">
+        <p class="text-center h2">Tu tiempo fue de: </p>
+        <p class="text-center h1 fw-bold text-uppercase" [ngClass]="{'text-danger': !esCumplido, 'text-success': esCumplido}"> {{tiempoCumplido}} </p>
+      </div>
+  </div>  

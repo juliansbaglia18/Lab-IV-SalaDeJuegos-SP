@@ -1,0 +1,88 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box box-slim">
+    <mat-card-header>
+      <mat-card-title>Log in</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="handleLogIn()">
+        <mat-form-field class="example-full-width" hideRequiredMarker>
+          <input
+            matInput
+            type="email"
+            name="email"
+            formControlName="email"
+            placeholder="Ingresar email"
+            autocomplete="email"
+            required
+          />
+          <mat-error
+            *ngIf="
+              loginForm.controls['email'].hasError('required') &&
+              loginForm.controls['email'].touched
+            "
+          >
+            Email requerido
+          </mat-error>
+          <mat-error
+            *ngIf="
+              loginForm.controls['email'].hasError('email') &&
+              loginForm.controls['email'].touched &&
+              !loginForm.controls['email'].hasError('required')
+            "
+          >
+            Email invalido
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" hideRequiredMarker>
+          <input
+            matInput
+            placeholder="Ingresar contraseña"
+            [type]="hidePassword ? 'password' : 'text'"
+            name="Password"
+            formControlName="password"
+            autocomplete="current-password"
+            required
+          />
+          <mat-icon matSuffix (click)="togglePasswordVisibility()">{{
+            hidePassword ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </mat-form-field>
+        <mat-error *ngIf="this.invalidCredentials">
+          Email o contraseña incorrecta
+        </mat-error>
+
+        <button
+          [disabled]="!loginForm.valid"
+          mat-stroked-button
+          type="submit"
+          color="accent"
+          class="btn-block"
+        >
+          Ingresar
+        </button>
+        <div class="formGroup">
+          <br>
+          <hr />
+          <br>
+        </div>
+      </form>
+      <div class="container">
+        <div class="row mb-2">
+          <button (click)="setMockUser(0)" mat-raised-button color="accent">
+            Ingresar como usuario 1
+          </button>
+        </div>
+        <div class="row mb-2">
+          <button (click)="setMockUser(1)" mat-raised-button color="accent">
+            Ingresar como usuario 2
+          </button>
+        </div>
+        <div class="row mb-2">
+          <button (click)="setMockUser(2)" mat-raised-button color="accent">
+            Ingresar como usuario 3
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

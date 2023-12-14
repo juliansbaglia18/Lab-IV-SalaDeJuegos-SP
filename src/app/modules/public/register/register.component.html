@@ -1,0 +1,55 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box box-slim">
+    <mat-card-header>
+      <mat-card-title>Registrarse</mat-card-title>
+    </mat-card-header>
+
+    <form [formGroup]="registerForm" (ngSubmit)="handleRegister()" class="example-form">
+      <mat-card-content> 
+        <mat-form-field class="example-full-width" hideRequiredMarker>
+          <input matInput type="text" name="username" formControlName="username" placeholder="Ingrese nombre de usuario" required autocomplete="username">
+          <mat-error
+            *ngIf="registerForm.controls['username'].hasError('containsSpaces') && registerForm.controls['username'].touched">
+            El usuario no puede contener espacios
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" hideRequiredMarker>
+          <input type="email" name="email" formControlName="email" matInput placeholder="Ingrese email" required>
+          <mat-error
+            *ngIf="emailAlreadyInUse">
+            Email en uso
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" hideRequiredMarker>
+          <input matInput placeholder="Ingrese contaseña" [type]="hidePassword[0] ? 'password' : 'text'" name="Password" required
+            formControlName="password" autocomplete="new-password">
+          <mat-icon matSuffix (click)="togglePasswordVisibility(0)">{{hidePassword[0] ? 'visibility_off' :
+            'visibility'}}</mat-icon>
+            <mat-hint>  
+              <mat-icon *ngIf="registerForm.controls['password'].hasError('pattern')" matTooltip="
+              La contraseña debe tener 8 caracteres, al menos 1 mayúscula, al menos 1 minúscula y un caracter especial (i.e. @!#$)"
+              matTooltipPosition="below"
+              matTooltipShowDelay="100"
+              matTooltipHideDelay="200">info
+             </mat-icon>
+            </mat-hint>  
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" hideRequiredMarker>
+          <input matInput placeholder="Confirmar contraseña" [type]="hidePassword[1] ? 'password' : 'text'"
+            formControlName="confirmPassword" name="confirmPassword" autocomplete="new-password">
+          <mat-icon matSuffix (click)="togglePasswordVisibility(1)">{{hidePassword[1] ? 'visibility_off' :
+            'visibility'}}</mat-icon>
+        </mat-form-field>
+
+        <mat-error *ngIf="registerForm.errors && registerForm.controls['confirmPassword'].touched">
+          Las contraseñas no coinciden
+        </mat-error>
+      </mat-card-content>
+      <button [disabled]="!registerForm.valid" type="submit" mat-stroked-button color="accent"
+        class="btn-block">Registrarse</button>
+    </form>
+  </mat-card>
+</div>
